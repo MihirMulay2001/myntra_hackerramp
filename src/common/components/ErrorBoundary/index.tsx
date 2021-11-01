@@ -23,9 +23,9 @@ export default class Index extends React.Component<{}, StateProp> {
     render() {
         if(!this.state.error)
         return (
-            <div>
-                
-            </div>
+            <>
+                {this.props.children}
+            </>
         )
         else return(
             <>

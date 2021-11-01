@@ -1,9 +1,9 @@
 import * as React from 'react'
 
-export default function Component3() {
+export default function ErrorScreen() {
     return (
         <div>
-            component 3
+            
         </div>
     )
 }

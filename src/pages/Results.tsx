@@ -1,5 +1,9 @@
-import React from 'react'
+import * as React from 'react'
 import Link from 'next/link'
+import Card from '../common/components/Card'
+
+
+
 
 export default function Results() {
     return (
