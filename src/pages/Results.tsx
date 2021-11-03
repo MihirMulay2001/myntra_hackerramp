@@ -2,6 +2,9 @@ import * as React from 'react'
 import Link from 'next/link'
 import Card from '../common/components/Card'
 import styles from '../../styles/Results.module.css'
+import useFetcher from '../common/hooks/useFetcher'
+import Loader from '../common/components/Loader'
+import { useSelector, useDispatch } from 'react-redux'
 
 type ItemType = {
     id: string,
@@ -65,23 +68,30 @@ const defaultData: ItemType[] = [
 
 
 export default function Results() {
+    const { data, loading, error } = useFetcher('url')
+    if (error)
+        return <div>error</div>
     return (
         <>
             <div className={styles.header}></div>
-            <div className={styles.patternMatches}>
-                <h1>Pattern Matches</h1>
-                <div className={styles.patternMatchCarousel}>
-                    {defaultData.map(item => <Card item={item} key={item.id} />)}
-                </div>
-            </div>
-            <div className={styles.matchingOutfit}>
-                {
-                    defaultData.map(item => <Card item={item} key={item.id} />)
-                }
-            </div>
+            {
+                loading ? <Loader />
+                    :
+                    <>
+                        <div className={styles.patternMatches}>
+                            <h1>Pattern Matches</h1>
+                            <div className={styles.patternMatchCarousel}>
+                                {defaultData.map(item => <Card item={item} key={item.id} />)}
+                            </div>
+                        </div>
+                        <div className={styles.matchingOutfit}>
+                            {
+                                defaultData.map(item => <Card item={item} key={item.id} />)
+                            }
+                        </div>
+                    </>
+            }
+
         </>
     )
 }
-/* <Link href="/Item/shirt" passHref>
-                    <button> buy item</button>
-                </Link> */
