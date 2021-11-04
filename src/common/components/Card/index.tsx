@@ -2,6 +2,7 @@ import * as React from 'react'
 import styles from './Card.module.css'
 import Image from 'next/image'
 import Link from 'next/link'
+import SampleImage from '../../assets/sample-image.jpg'
 
 type ItemType = {
     id: string,
@@ -24,21 +25,22 @@ export default function Index(prop) {
         <Link href={`/Item/${item.id}`} passHref>
             <div className={styles.card}>
                 <div className={styles.image}>
-                    <Image src={item.image} alt="item" width="300" height="300" />
+                    <Image src={SampleImage} alt="item" width="170" height="125" />
                     <div className={styles.rating}>
-                        <i className="fas fa-star"></i>{item.rating}
+                        <i className="fas fa-star"></i>
                         {item.rating}
                     </div>
                 </div>
                 <div className={styles.brand}>{item.brand}</div>
                 <div className={styles.label}>{item.label}</div>
                 <div className={styles.value}>
-                    <div className={styles.price}>{item.price}</div>
+                    <div className={styles.price}>&#x20B9;  {item.price}</div>
                     {
-                        !item.discount && <div className={styles.discount}>{item.discount}</div>
+                        item.discount && <div className={styles.discount}>(-{item.discount}%)</div>
                     }
                 </div>
             </div>
         </Link>
     )
 }
+
