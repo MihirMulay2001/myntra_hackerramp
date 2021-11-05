@@ -2,7 +2,7 @@ import {useState, useEffect} from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 
 type ItemType = {
-    id: string,
+    _id: string,
     brand?: string,
     label: string,
     size: string,

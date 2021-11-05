@@ -1,5 +1,5 @@
 type ItemType = {
-    id: string,
+    _id: string,
     brand?: string,
     label: string,
     size: string,

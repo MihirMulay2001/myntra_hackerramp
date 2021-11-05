@@ -27,12 +27,13 @@
 }
 .value {
   display: flex;
-  align-items: baseline;
+  align-items: center;
 }
 .label {
-  font-size: 21px;
+  font-size: 20px;
   height: 50px;
-  margin-bottom: 10px;
+  margin-bottom: 15px;
+  overflow: hidden;
 }
 .price {
   font-size: 19px;

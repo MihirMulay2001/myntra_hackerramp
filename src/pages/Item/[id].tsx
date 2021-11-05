@@ -3,12 +3,12 @@ import { useRouter } from 'next/router'
 import styles from '../../../styles/Item.module.css'
 import Image from 'next/image'
 import useModifyCart from '../../common/hooks/useModifyCart'
-import useFetcher from '../../common/hooks/useFetcher'
 import SampleImage from '../../common/assets/sample-image.jpg'
+import { useSelector } from 'react-redux'
 
 
 type ItemType = {
-    id: string,
+    _id: string,
     brand?: string,
     label: string,
     size: string,
@@ -25,8 +25,10 @@ type ItemType = {
 export default function Item() {
     const router = useRouter()
     const id = router.query.id
-    const props = useFetcher(`http://192.168.0.106:8080/item/${id}`)
-    const data: ItemType = props.data
+    const itemList: ItemType[] = useSelector((state: any) => state.itemsList)
+    const data = itemList.find(item => item._id === id)
+    console.log(data);
+
     const { addItem, modifyItemQuantity, itemQuantity } = useModifyCart(id)
     const [size, setSize] = useState('m')
     const handleClick = (value: string) => {
@@ -49,15 +51,14 @@ export default function Item() {
             <div className={styles.header}> </div>
             <div className={styles.container} >
                 <div className={styles.image}>
-                    <Image src={SampleImage} alt="item" width="355" height="325" />
+                    {/* <Image src="https://storage.googleapis.com/download/storage/v1/b/myntra-sense.appspot.com/o/%2Fimages%2Fimg6.jpg?generation=1636021558092010&alt=media" alt="item" width="355" height="325" /> */}
                 </div>
                 <div className={styles.brand}>{data.brand}</div>
                 <div className={styles.label}>{data.label}</div>
                 <div className={styles.price}>
-                    {data.price}
-                    <div className={styles.discount}>{data.discount}</div>
+                    &#x20B9;{data.price}
+                    <div className={styles.discount}>({data.discount}% off)</div>
                 </div>
-                <hr />
                 <div className={styles.sizes}>
                     <div>Select size</div>
                     <div className={styles.selectSizes}>

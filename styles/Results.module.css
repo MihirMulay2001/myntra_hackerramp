@@ -11,6 +11,7 @@
   grid-template-columns: repeat(100, 1fr);
   column-gap: 20px;
   overflow-x: scroll;
+  overflow-y: hidden;
   padding: 15px;
 }
 .matchingOutfit {

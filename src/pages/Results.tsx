@@ -1,12 +1,11 @@
 import * as React from 'react'
-import Link from 'next/link'
 import Card from '../common/components/Card'
 import styles from '../../styles/Results.module.css'
 import useFetcher from '../common/hooks/useFetcher'
 import Loader from '../common/components/Loader'
 
 type ItemType = {
-    id: string,
+    _id: string,
     brand?: string,
     label: string,
     size: string | string[],
@@ -23,7 +22,7 @@ type ItemType = {
 
 
 export default function Results() {
-    const { data, loading, error } = useFetcher('http://192.168.0.106:8080/getitems')
+    const { data, loading, error } = useFetcher('http://localhost:8080/item/findMatchedItems')
     if (error)
         return <div>error</div>
     return (
@@ -36,13 +35,13 @@ export default function Results() {
                         <div className={styles.patternMatches}>
                             <h1>Pattern Matches</h1>
                             <div className={styles.patternMatchCarousel}>
-                                {data.map(item => <Card item={item} key={item.id} />)}
+                                {data.map(item => <Card item={item} key={item._id} />)}
                             </div>
                         </div>
                         <h1> Matches found </h1>
                         <div className={styles.matchingOutfit}>
                             {
-                                data.map(item => <Card item={item} key={item.id} />)
+                                data.map(item => <Card item={item} key={item._id} />)
                             }
                         </div>
                     </>

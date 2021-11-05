@@ -5,7 +5,7 @@ import Link from 'next/link'
 import SampleImage from '../../assets/sample-image.jpg'
 
 type ItemType = {
-    id: string,
+    _id: string,
     brand?: string,
     label: string,
     size: string,
@@ -22,7 +22,7 @@ type ItemType = {
 export default function Index(prop) {
     const item: ItemType = prop.item
     return (
-        <Link href={`/Item/${item.id}`} passHref>
+        <Link href={`/Item/${item._id}`} passHref>
             <div className={styles.card}>
                 <div className={styles.image}>
                     <Image src={SampleImage} alt="item" width="170" height="125" />
