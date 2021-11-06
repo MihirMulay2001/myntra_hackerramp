@@ -3,7 +3,7 @@ import Card from '../common/components/Card'
 import styles from '../../styles/Results.module.css'
 import useFetcher from '../common/hooks/useFetcher'
 import Loader from '../common/components/Loader'
-
+import Header from '../common/components/Header/Index'
 type ItemType = {
     _id: string,
     brand?: string,
@@ -22,12 +22,12 @@ type ItemType = {
 
 
 export default function Results() {
-    const { data, loading, error } = useFetcher('http://localhost:8080/item/findMatchedItems')
+    const { data, loading, error } = useFetcher('https://myntra-sense-backend.herokuapp.com/item/findMatchedItems')
     if (error)
         return <div>error</div>
     return (
         <>
-            <div className={styles.header}> </div>
+            <Header />
             {
                 loading ? <Loader />
                     :

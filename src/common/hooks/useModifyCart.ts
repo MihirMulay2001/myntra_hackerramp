@@ -1,5 +1,6 @@
 import {useState, useEffect} from 'react'
 import { useSelector, useDispatch } from 'react-redux'
+import {addItem as addNewItem, modifyItem} from '../../redux/actions'
 
 type ItemType = {
     _id: string,
@@ -15,18 +16,21 @@ type ItemType = {
     rating: number
 }
 
-const useModifyCart = (id:string | string[]) => {
-    //const itemList = useSelector(state => state["itemsList"])
-    //const itemProp:ItemType = itemList.find(item => item.id === id)
+const useModifyCart = (id : string | string[]) => {
     const dispatch = useDispatch() 
-    const addItem = () => {
-        return {}
+    const itemList = useSelector((state:any) => state.cart)
+    console.log(itemList);
+    
+    const addItem = ({size}) => {
+        dispatch(addNewItem(id, size))
     }
     const modifyItemQuantity = (value:number) => {
-        
+        dispatch(modifyItem(id,value))   
     }
     const itemQuantity = () => {
-        return 0
+        const itemPresent = itemList.find(item => item.id === id)
+        const quantity = itemPresent ? itemPresent.quantity : 0
+        return quantity
     }
     return {addItem,itemQuantity,modifyItemQuantity}
 }
