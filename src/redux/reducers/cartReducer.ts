@@ -1,11 +1,6 @@
-type StateType = {
-    id: string,
-    quantity: number,
-    size: string,
-    fit ?: string
-}
+import { CartStateType } from "../../common/types";
 
-const modifyItem = (state : StateType[], {itemid, change}) =>{
+const modifyItem = (state : CartStateType[], {itemid, change}) =>{
     const index = state.findIndex(({id : idx}) => idx === itemid)
     const newQuantity = state[index].quantity + change ;
     let newState = state;
@@ -14,7 +9,7 @@ const modifyItem = (state : StateType[], {itemid, change}) =>{
         : newState.splice(index,1)
     return ([...newState]);
 }
-const addItem = (state:StateType[], {id, size}) => {
+const addItem = (state:CartStateType[], {id, size}) => {
     const idx = state.findIndex(item =>  item.id === id)
     let newState = state
     if(idx === -1)
@@ -24,18 +19,7 @@ const addItem = (state:StateType[], {id, size}) => {
     
     return newState
 }
-
-// const removeItem = (state:StateType[], itemId) => {
-//     const idx = state.findIndex(item =>  item.id === itemId)
-//     let newState = state
-//     if(newState[idx].quantity === 1)
-//         newState.splice(idx,1)
-//     else
-//         newState[idx].quantity -= 1
-//     return newState
-// }
-
-const initialState: StateType[] = []
+const initialState: CartStateType[] = []
 
 const cartReducer = (state = initialState, action) => {
     switch (action.type){

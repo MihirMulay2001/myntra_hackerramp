@@ -6,20 +6,7 @@ import useModifyCart from '../../common/hooks/useModifyCart'
 import SampleImage from '../../common/assets/sample-image.jpg'
 import { useSelector } from 'react-redux'
 import Header from '../../common/components/Header/Index'
-
-type ItemType = {
-    _id: string,
-    brand: string,
-    label: string,
-    size: string,
-    color: string,
-    fit: string,
-    occasion: string,
-    image: string,
-    price: number,
-    discount?: number,
-    rating: number
-}
+import { ItemType } from '../../common/types'
 
 
 export default function Item() {
@@ -53,7 +40,7 @@ export default function Item() {
             <Header />
             <div className={styles.container} >
                 <div className={styles.image}>
-                    {/* <Image src="https://storage.googleapis.com/download/storage/v1/b/myntra-sense.appspot.com/o/%2Fimages%2Fimg6.jpg?generation=1636021558092010&alt=media" alt="item" width="355" height="325" /> */}
+                    <Image src={data.imageUrl} alt="item" width="355" height="325" />
                 </div>
                 <div className={styles.brand}>{data.brand}</div>
                 <div className={styles.label}>{data.label}</div>

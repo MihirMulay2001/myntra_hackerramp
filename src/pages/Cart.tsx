@@ -2,7 +2,7 @@ import React from 'react'
 import { useSelector } from 'react-redux'
 function Cart() {
     const cartState = useSelector((state: any) => state.cart)
-    const itemList = useSelector((state: any) => state.itemList)
+    const itemList = useSelector((state: any) => state.itemsList)
     const cartItems = cartState.map(item => {
         const newItem = itemList.find(matchItem => matchItem._id === item.id)
         return {

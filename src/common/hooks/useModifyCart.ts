@@ -1,20 +1,7 @@
 import {useState, useEffect} from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import {addItem as addNewItem, modifyItem} from '../../redux/actions'
-
-type ItemType = {
-    _id: string,
-    brand?: string,
-    label: string,
-    size: string,
-    color: string,
-    fit: string,
-    occasion: string,
-    image: string,
-    price: number,
-    discount: number,
-    rating: number
-}
+import { ItemType } from '../types'
 
 const useModifyCart = (id : string | string[]) => {
     const dispatch = useDispatch() 
