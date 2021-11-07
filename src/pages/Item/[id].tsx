@@ -1,5 +1,4 @@
 import React, { useState } from 'react'
-import { useRouter } from 'next/router'
 import styles from '../../../styles/Item.module.css'
 import Image from 'next/image'
 import useModifyCart from '../../common/hooks/useModifyCart'
@@ -10,13 +9,12 @@ import { ItemType } from '../../common/types'
 
 
 export default function Item() {
-    const router = useRouter()
-    const id = router.query.id
     const itemList: ItemType[] = useSelector((state: any) => state.itemsList)
+    const id = window.location.pathname.split('/')[2]
 
+    const [size, setSize] = useState('m')
     const data = itemList.find(item => item._id === id)
     const { addItem, modifyItemQuantity, itemQuantity } = useModifyCart(id)
-    const [size, setSize] = useState('m')
     const handleClick = (value: string) => {
         setSize(value)
     }

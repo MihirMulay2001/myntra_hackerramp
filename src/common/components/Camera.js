@@ -55,7 +55,7 @@ const Camera = () => {
 
       {imgSrc && !cam && (
         <div>
-          <Image src={imgSrc} alt=""/>
+          <img src={imgSrc} alt=""/>
           <div className={styles.confirm}>
             <Link href="/Results" passHref>
               <button className={`${styles.landing_btn} ${styles.capture}`}>
