@@ -15,9 +15,6 @@ export default function Item() {
     const itemList: ItemType[] = useSelector((state: any) => state.itemsList)
 
     const data = itemList.find(item => item._id === id)
-    if (data == undefined || data == null) {
-        router.push('/Results')
-    }
     const { addItem, modifyItemQuantity, itemQuantity } = useModifyCart(id)
     const [size, setSize] = useState('m')
     const handleClick = (value: string) => {

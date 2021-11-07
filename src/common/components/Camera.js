@@ -4,7 +4,7 @@ import {useSelector, useDispatch} from 'react-redux'
 import styles from "../../../styles/Landing.module.css";
 import Link from "next/link";
 import { addImage } from "../../redux/actions";
-
+import Image from 'next/image'
 
 import Webcam from "react-webcam";
 
@@ -20,6 +20,7 @@ const Camera = () => {
     dispatch(addImage(imageSrc.substring(23)));
     setImgSrc(imageSrc);
     setcam(!cam);
+    //eslint-disable-next-line
   }, [webcamRef, setImgSrc, cam]);
 
   const retake = () => {
@@ -54,7 +55,7 @@ const Camera = () => {
 
       {imgSrc && !cam && (
         <div>
-          <img src={imgSrc} />
+          <Image src={imgSrc} alt=""/>
           <div className={styles.confirm}>
             <Link href="/Results" passHref>
               <button className={`${styles.landing_btn} ${styles.capture}`}>

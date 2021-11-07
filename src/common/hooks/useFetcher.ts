@@ -44,6 +44,7 @@ const useFetcher = (url:string) => {
         setLoading(false)
         }
         fetchData()
+        //eslint-disable-next-line
     }, [])
     return {loading, error, data}
 }
