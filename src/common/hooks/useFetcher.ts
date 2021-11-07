@@ -2,7 +2,7 @@ import {useState, useEffect} from 'react'
 import {useDispatch, useSelector} from 'react-redux'
 import {addItemList} from '../../redux/actions'
 import { ItemType } from '../types'
-//import { image } from '../assets/sample-test'
+import { image } from '../assets/sample-test'
 
 
 const useFetcher = (url:string) => {
@@ -11,7 +11,7 @@ const useFetcher = (url:string) => {
     const [loading, setLoading] = useState<boolean>(true)
     const dispatch = useDispatch()
     const itemsList = useSelector((state : any) => state.itemsList)
-    const image = useSelector((state : any) => state.image)
+    //const image = useSelector((state : any) => state.image)
     //data:image/jpeg;base64,
     const imageData = {
             image : image
