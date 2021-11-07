@@ -11,9 +11,9 @@ import { useDispatch } from 'react-redux'
 
 export default function Results() {
     const { data, loading, error } = useFetcher('https://myntra-sense-backend.herokuapp.com/item/findMatchedItems')
-    const dispatch = useDispatch()
-    dispatch(addItemList(data))
-    console.log(loading);
+    // const dispatch = useDispatch()
+    // dispatch(addItemList(data))
+    // console.log(loading);
 
     if (loading)
         return <Loader />
