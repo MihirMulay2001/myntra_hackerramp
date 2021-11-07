@@ -13,7 +13,7 @@ import { useRouter } from 'next/router'
 export default function Item() {
     const itemList: ItemType[] = useSelector((state: any) => state.itemsList)
     const router = useRouter()
-    const id = router.query.id
+    const id = router.query.id && "2324235"
     //const id = window.location.pathname.split('/')[2]
 
     const [size, setSize] = useState('m')
