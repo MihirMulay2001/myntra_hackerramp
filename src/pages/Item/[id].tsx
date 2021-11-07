@@ -6,17 +6,22 @@ import SampleImage from '../../common/assets/sample-image.jpg'
 import { useSelector } from 'react-redux'
 import Header from '../../common/components/Header/Index'
 import { ItemType } from '../../common/types'
-import useRouting from '../../common/hooks/useRouting'
+//import useRouting from '../../common/hooks/useRouting'
+import { useRouter } from 'next/router'
+
 
 export default function Item() {
     const itemList: ItemType[] = useSelector((state: any) => state.itemsList)
-    const props = useRouting()
-    const id = props.id
+    const router = useRouter()
+    const id = router.query.id
     //const id = window.location.pathname.split('/')[2]
 
     const [size, setSize] = useState('m')
     const data = itemList.find(item => item._id === id)
     const { addItem, modifyItemQuantity, itemQuantity } = useModifyCart(id)
+    if (router.isFallback) {
+        return <div>Loading...</div>
+    }
     const handleClick = (value: string) => {
         setSize(value)
     }
