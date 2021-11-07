@@ -21,3 +21,8 @@ export const addItemList = (itemList) => ({
     type: ADD_ITEM_LIST,
     itemList: itemList
 })
+
+export const addImage = (image) => ({
+    type: 'SET_IMAGE',
+    image: image
+})

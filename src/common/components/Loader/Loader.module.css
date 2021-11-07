@@ -9,8 +9,8 @@
   width: 80px;
   height: 80px;
   border-radius: 50%;
-  border: 1px grey solid;
-  border-top: black;
+  border: 3px grey solid;
+  border-top: white;
   animation: loading infinite 2s linear;
 }
 @keyframes loading {
