@@ -101,3 +101,21 @@ export default function Item() {
         </>
     )
 }
+
+
+
+
+
+export async function getStaticPaths() {
+
+    // We'll pre-render only these paths at build time.
+    // { fallback: false } means other routes should 404.
+    return { params: { id: "3434552" }, fallback: true }
+}
+
+// This also gets called at build time
+export async function getStaticProps({ params }) {
+
+    // Pass post data to the page via props
+    return {}
+}
