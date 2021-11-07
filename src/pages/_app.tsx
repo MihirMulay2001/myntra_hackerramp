@@ -1,3 +1,4 @@
+
 import '../../styles/globals.css'
 import { AppProps } from 'next/app'
 import { Provider } from 'react-redux'
@@ -9,4 +10,4 @@ function MyApp({ Component, pageProps }: AppProps) {
   </Provider>
 }
 
-export default MyApp
+export default MyApp;
